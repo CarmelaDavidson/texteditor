@@ -15,6 +15,12 @@ public class GapBufferTests {
     }
 
     @Test
+    public void sizeEmpty() {
+        GapBuffer a = new GapBuffer();
+        assertEquals(0, a.getSize());
+    }
+
+    @Test
     public void insertFront() {
         GapBuffer a = new GapBuffer();
         a.insert('a');
