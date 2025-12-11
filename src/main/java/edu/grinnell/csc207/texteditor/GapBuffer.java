@@ -34,29 +34,10 @@ public class GapBuffer {
         } 
             arr[start_i] = ch;
             start_i++;
-
-        // if(start_i == 0){
-        //     for(int i = last_i; i < arr.length; i++){
-        //         arr[i] = arr[i-1];
-        //     }
-        // }else if(start_i == last_i){
-        //     arr = Arrays.copyOf(arr, sz * 2);
-        //     for(int j = last_i; j < (arr.length - last_i); j++){
-        //         for(int i = last_i; i < arr.length; i++){
-        //             arr[i] = arr[i-1];
-        //         }
-        //     } 
-        // }
-        // last_i = (arr.length - last_i);
-        // if(arr.length >= sz){
-        //     arr[start_i] = ch;
-        //     start_i++;
-        //     sz++;
-        // }
     }
 
     public void delete() {
-        if(start_i != 0){
+        if(start_i < 0){
             start_i--;
         }
     }
