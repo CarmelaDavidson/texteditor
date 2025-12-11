@@ -85,7 +85,7 @@ public class GapBuffer {
     }
 
     public int getSize() {
-        return arr.length - start_i -last_i;
+        return arr.length - start_i - (arr.length - last_i);
     }
 
     public char getChar(int i) {
