@@ -1,6 +1,7 @@
 package edu.grinnell.csc207.texteditor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +19,26 @@ public class GapBufferTests {
     public void sizeEmpty() {
         GapBuffer a = new GapBuffer();
         assertEquals(0, a.getSize());
+    }
+
+    @Test
+    public void LRtest(){
+        GapBuffer a = new GapBuffer();
+        a.insert('a');
+        a.insert('a');
+        a.insert('a');
+        a.insert('a');
+        a.insert('a');
+        a.insert('a');
+        a.moveLeft();
+        a.moveLeft();
+        a.moveLeft();
+        a.moveLeft();
+        a.moveRight();
+        a.moveRight();
+        a.moveRight();
+
+        assertEquals(5, a.getCursorPosition());
     }
 
     @Test

@@ -10,6 +10,7 @@
 ## Changelog
 
 + Added README
++ updated all of gapbuffer to work as intended
 
 
 ## Part 2
