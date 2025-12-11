@@ -77,7 +77,7 @@ public class GapBuffer {
     }
 
     public void moveRight() {
-        if(start_i < arr.length - 1){
+        if(last_i < arr.length - 1 && start_i <= last_i){
             start_i++;
             last_i++;
             arr[start_i] = arr[last_i];
