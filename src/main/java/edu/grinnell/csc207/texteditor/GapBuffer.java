@@ -15,8 +15,8 @@ public class GapBuffer {
 
     public GapBuffer(){
         this.start_i = 0;
-        this.last_i = 10;
-        this.sz = 10;
+        this.last_i = 1;
+        this.sz = 1;
         this.arr = new char[sz];
     }
 
@@ -85,7 +85,7 @@ public class GapBuffer {
     }
 
     public int getSize() {
-        return sz;
+        return sz - 1;
     }
 
     public char getChar(int i) {
