@@ -1,16 +1,15 @@
 # CSC 207: Text Editor
 
-**Author**: _(TODO: fill me in)_
+**Author**: Carmela Davidson
 
 ## Resources Used
 
-+ _(TODO: fill me in)_
-+ ...
-+ ...
-
++ Prof Osera
++ TTAP
++ 
 ## Changelog
 
-_(TODO: fill me in with a log of your committed changes)_
++ Added README
 
 
 ## Part 2

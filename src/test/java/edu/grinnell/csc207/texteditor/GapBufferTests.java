@@ -14,6 +14,21 @@ public class GapBufferTests {
         assertEquals('b', a.getChar(0));
     }
 
+    @Test
+    public void insertFront() {
+        GapBuffer a = new GapBuffer();
+        a.insert('a');
+        a.insert('b');
+        a.insert('c');
+        a.insert('d');
+        a.moveLeft();
+        a.moveLeft();
+        a.moveLeft();
+        a.moveLeft();
+        a.insert('Z');
+        assertEquals('Z', a.getChar(0));
+    }
+
 @Test
     public void insertFull() {
         GapBuffer a = new GapBuffer();
@@ -63,6 +78,21 @@ public class GapBufferTests {
         a.moveLeft();
         a.moveRight();
         assertEquals(3, a.getCursorPosition());
+    }
+
+    @Test
+    public void insertTest(){
+        GapBuffer buf = new GapBuffer();
+        buf.insert('a');
+        buf.insert('b');
+        buf.insert('c');
+        buf.moveLeft();
+        buf.moveLeft();
+        buf.insert('!');
+        buf.insert('!');
+        //assertEquals(5, buf.getSize(), "size");
+        assertEquals(3, buf.getCursorPosition(), "cursor");
+        assertEquals("a!!bc", buf.toString(), "contents");
     }
 
     @Test

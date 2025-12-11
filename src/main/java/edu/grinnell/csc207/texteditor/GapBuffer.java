@@ -8,59 +8,78 @@ import java.util.Arrays;
 public class GapBuffer {
 
     public int curs;
-    public int gap_i;
+    public int start_i;
     public int last_i;
     public int sz;
     public char[] arr;
 
     public GapBuffer(){
-        this.gap_i = 0;
-        this.last_i = 0;
-        this.sz = 1;
-        this.arr = new char[10];
+        this.start_i = 0;
+        this.last_i = 10;
+        this.sz = 10;
+        this.arr = new char[sz];
     }
 
     public void insert(char ch) {
-        if(gap_i == 0){
-            arr[gap_i] = ch;
-        }else if(gap_i == last_i){
-            arr = Arrays.copyOf(arr, sz * 2);
-            for(int j = last_i; j < (arr.length - last_i); j++){
-                for(int i = last_i; i < arr.length; i++){
-                    arr[i] = arr[i-1];
-                }
-            } 
-        }
-        last_i = (arr.length - last_i);
-        if(arr.length >= sz){
-            arr[gap_i] = ch;
-            gap_i++;
-            sz++;
-        }
+        //if buffer size is not 0
+        //insert char at start
+        //move start over
+        //if buffer 0, increase buffer size
+        //push left and right ends to ends of arr
+        if(start_i == last_i){
+            arr = Arrays.copyOf(arr, sz*2);
+            for(int i = 0; i < arr.length - start_i; i++){
+                arr[i + sz/2] = arr[i];
+            }
+        } 
+            arr[start_i] = ch;
+            start_i++;
+
+        // if(start_i == 0){
+        //     for(int i = last_i; i < arr.length; i++){
+        //         arr[i] = arr[i-1];
+        //     }
+        // }else if(start_i == last_i){
+        //     arr = Arrays.copyOf(arr, sz * 2);
+        //     for(int j = last_i; j < (arr.length - last_i); j++){
+        //         for(int i = last_i; i < arr.length; i++){
+        //             arr[i] = arr[i-1];
+        //         }
+        //     } 
+        // }
+        // last_i = (arr.length - last_i);
+        // if(arr.length >= sz){
+        //     arr[start_i] = ch;
+        //     start_i++;
+        //     sz++;
+        // }
     }
 
     public void delete() {
-        if(gap_i != 0){
-            gap_i--;
+        if(start_i != 0){
+            start_i--;
         }
     }
 
     public int getCursorPosition() {
-        return gap_i;
+        return start_i;
     }
 
     public void moveLeft() {
-        if(gap_i > 0){
-            arr[last_i - 1] = arr[gap_i];
-            gap_i--; 
+        if(start_i > 0){
+            start_i--;
             last_i--;
+            arr[last_i] = arr[start_i];
         }
+        //move last back 1
+        //move start back 1
+        //set start 1 to last 
     }
 
     public void moveRight() {
-        if(gap_i < arr.length - last_i){
-            arr[gap_i] = arr[last_i];
-            gap_i++;
+        if(start_i < arr.length - last_i){
+            arr[start_i] = arr[last_i];
+            start_i++;
             last_i++;
         }
     }
@@ -70,16 +89,19 @@ public class GapBuffer {
     }
 
     public char getChar(int i) {
-        if(i < gap_i){
+        //if(i < arr.length){
             return arr[i];
-        }else{
-            return arr[(i - gap_i) + last_i];
-        }
+       // }
     }
 
     public String toString() {
-        String first = Arrays.copyOfRange(arr, 0, (gap_i - 1)).toString();
-        String last = Arrays.copyOfRange(arr, last_i, arr.length-1).toString();
-        return first + last;
+        String first = "";
+        for(int i = 0; i < start_i; i++){
+                first = first + arr[i];
+        }
+        for(int i = last_i; i < arr.length; i++){
+            first = first + arr[i];
+    }
+        return first;
     }
 }
