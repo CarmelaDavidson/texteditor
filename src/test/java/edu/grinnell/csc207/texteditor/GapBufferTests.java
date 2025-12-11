@@ -80,6 +80,7 @@ public class GapBufferTests {
         assertEquals(3, a.getCursorPosition());
     }
 
+
     @Test
     public void insertTest(){
         GapBuffer buf = new GapBuffer();
@@ -90,7 +91,7 @@ public class GapBufferTests {
         buf.moveLeft();
         buf.insert('!');
         buf.insert('!');
-        //assertEquals(5, buf.getSize(), "size");
+        assertEquals(5, buf.getSize(), "size");
         assertEquals(3, buf.getCursorPosition(), "cursor");
         assertEquals("a!!bc", buf.toString(), "contents");
     }
